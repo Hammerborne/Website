@@ -20,6 +20,8 @@ export function HeroSection() {
         fill
         className="object-cover object-center pointer-events-none"
         priority
+        placeholder="blur"
+        quality={75}
       />
       {/* Background gradient overlay - cold hangar feel */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#1a1d1e]/95 via-[#1a1d1e]/60 to-[#ffffff]/0 pointer-events-none" />
