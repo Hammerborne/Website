@@ -1,0 +1,131 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Brutalist Industrial Palette - Desert Tans & Slate Grays */
+  --background: #1a1d1e;
+  --main-title: #d0c6ae;
+  --foreground: #c4b89a;
+  --card: #232829;
+  --card-foreground: #c4b89a;
+  --popover: #232829;
+  --popover-foreground: #c4b89a;
+  --primary: #67bed9;
+  --primary-foreground: #0a0a0a;
+  --secondary: #ffffff;
+  --secondary-foreground: #c4b89a;
+  --muted: #2D3436;
+  --muted-foreground: #8b8069;
+  --accent: #67bed9;
+  --accent-foreground: #0a0a0a;
+  --destructive: #ff4444;
+  --destructive-foreground: #ffffff;
+  --border: #3d3d35;
+  --input: #232829;
+  --ring: #67bed9;
+  --radius: 0;
+}
+
+@theme inline {
+  --font-sans: var(--font-mono);
+  --font-mono: 'Share Tech Mono', 'Geist Mono', monospace;
+  --font-display: 'Bebas Neue', 'Impact', sans-serif;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: 0;
+  --radius-md: 0;
+  --radius-lg: 0;
+  --radius-xl: 0;
+  
+  /* Custom theme color */
+  --color-cyan: #67bed9;
+  --color-main-title: var(--main-title);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Noise overlay for sand-dusted analog feel */
+.noise-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Scanline effect for terminal displays */
+.scanlines::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.08) 1px,
+    rgba(0, 0, 0, 0.08) 2px
+  );
+  z-index: 1;
+}
+
+/* Typewriter cursor animation */
+.typewriter-cursor {
+  display: inline-block;
+  width: 12px;
+  height: 1.2em;
+  background-color: #67bed9;
+  margin-left: 4px;
+  animation: blink 1s step-end infinite;
+  vertical-align: text-bottom;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Cyan glow effect for buttons */
+.cyan-glow {
+  box-shadow: 0 0 10px rgba(103, 190, 217, 0.3), 
+              0 0 20px rgba(103, 190, 217, 0.2),
+              inset 0 0 10px rgba(103, 190, 217, 0.1);
+}
+
+.cyan-text-glow {
+  text-shadow: 0 0 10px rgba(103, 190, 217, 0.5),
+               0 0 20px rgba(103, 190, 217, 0.3);
+}
