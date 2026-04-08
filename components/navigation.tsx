@@ -1,13 +1,21 @@
 "use client"
 
 import Link from "next/link"
+import Image from "next/image"
 
 export function Navigation() {
   return (
     <header className="nav-enter-animate fixed top-0 left-0 right-0 z-50 border-b-2 border-border bg-background/95 backdrop-blur-sm">
       <nav className="container mx-auto px-6 py-4 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="group">
+        <Link href="/" className="group flex items-center gap-3">
+          <Image
+            src="/company-logo.png"
+            alt="Hammerborne"
+            width={46}
+            height={46}
+            className="object-contain"
+          />
           <span className="font-[family-name:var(--font-display)] text-2xl md:text-3xl tracking-wider text-foreground group-hover:text-cyan transition-colors">
             HAMMERBORNE
           </span>

@@ -1,21 +1,17 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Cog, Mountain, Radio } from "lucide-react"
 
 const features = [
   {
-    icon: Cog,
     title: "Grand Strategy",
     description: "Command vast fleets and manage sprawling empires across procedurally generated star systems. Every decision shapes the fate of civilizations.",
   },
   {
-    icon: Mountain,
     title: "Tactical Industrialism",
     description: "Build planet-spanning factories and orbital megastructures. Extract, refine, and weaponize resources in a universe where scarcity drives conflict.",
   },
   {
-    icon: Radio,
     title: "Low-Tech Sovereignty",
     description: "Embrace the aesthetic of analog interfaces and brutal efficiency. No sleek holograms here—only switches, dials, and the hum of heavy machinery.",
   },
@@ -75,13 +71,8 @@ export function FeaturesSection() {
             <motion.div
               key={feature.title}
               variants={itemVariants}
-              className="group relative border-4 border-border bg-[#1a1d1e] p-8 hover:border-cyan transition-colors duration-300"
+              className="group relative isolate border-4 border-border bg-[#1a1d1e] p-8 hover:border-cyan transition-colors duration-300"
             >
-              {/* Icon */}
-              <div className="mb-6 inline-flex items-center justify-center w-16 h-16 border-2 border-border group-hover:border-cyan transition-colors">
-                <feature.icon className="w-8 h-8 text-muted-foreground group-hover:text-cyan transition-colors" />
-              </div>
-
               {/* Title */}
               <h3 className="font-[family-name:var(--font-display)] text-2xl md:text-3xl tracking-wider text-foreground mb-4">
                 {feature.title}
@@ -99,7 +90,7 @@ export function FeaturesSection() {
               </div>
 
               {/* Number indicator */}
-              <div className="absolute bottom-4 right-4 font-[family-name:var(--font-display)] text-6xl text-border group-hover:text-cyan/20 transition-colors">
+              <div className="absolute bottom-4 right-4 font-[family-name:var(--font-display)] text-6xl text-border group-hover:text-cyan/20 transition-colors -z-10 pointer-events-none">
                 0{index + 1}
               </div>
             </motion.div>

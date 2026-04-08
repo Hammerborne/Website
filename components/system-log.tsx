@@ -3,11 +3,15 @@
 import { useState, useEffect, useRef } from "react"
 import { motion } from "framer-motion"
 
-const LOG_TEXT = "PROJECT STATUS: UNDER DEVELOPMENT... EXPECTED RELEASE CYCLE: 2028."
+const LINE_1 = "PROJECT STATUS: UNDER DEVELOPMENT..."
+const LINE_2 = "EXPECTED RELEASE CYCLE: 2028."
 
 export function SystemLog() {
-  const [displayedText, setDisplayedText] = useState("")
+  const [displayedLine1, setDisplayedLine1] = useState("")
+  const [displayedLine2, setDisplayedLine2] = useState("")
+  const [line1Complete, setLine1Complete] = useState(false)
   const [isComplete, setIsComplete] = useState(false)
+  const [showCursor, setShowCursor] = useState(true)
   const sectionRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
@@ -18,13 +22,28 @@ export function SystemLog() {
         if (entry.isIntersecting) {
           observer.disconnect()
           let index = 0
+          // Type line 1
           interval = setInterval(() => {
-            if (index < LOG_TEXT.length) {
-              setDisplayedText(LOG_TEXT.slice(0, index + 1))
+            if (index < LINE_1.length) {
+              setDisplayedLine1(LINE_1.slice(0, index + 1))
               index++
             } else {
-              setIsComplete(true)
+              setLine1Complete(true)
               clearInterval(interval!)
+              // Type line 2 after 2.5s delay
+              setTimeout(() => {
+              let index2 = 0
+              interval = setInterval(() => {
+                if (index2 < LINE_2.length) {
+                  setDisplayedLine2(LINE_2.slice(0, index2 + 1))
+                  index2++
+                } else {
+                  setIsComplete(true)
+                  clearInterval(interval!)
+                  setTimeout(() => setShowCursor(false), 2750)
+                }
+              }, 40)
+              }, 2750)
             }
           }, 40)
         }
@@ -61,10 +80,19 @@ export function SystemLog() {
             </div>
 
             {/* Log content */}
-            <div className="font-mono text-lg md:text-xl text-cyan leading-relaxed">
-              <span className="text-muted-foreground mr-2">{">>"}</span>
-              <span>{displayedText}</span>
-              {!isComplete && <span className="typewriter-cursor" />}
+            <div className="font-mono text-lg md:text-xl text-cyan leading-relaxed space-y-2">
+              <div>
+                <span className="text-muted-foreground mr-2">{">>"}</span>
+                <span>{displayedLine1}</span>
+                {!line1Complete && <span className="typewriter-cursor" />}
+              </div>
+              {line1Complete && (
+                <div>
+                  <span className="text-muted-foreground mr-2">{">>"}</span>
+                  <span>{displayedLine2}</span>
+                  {showCursor && <span className="typewriter-cursor" />}
+                </div>
+              )}
             </div>
 
             {/* Corner decorations */}

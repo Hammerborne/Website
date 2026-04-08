@@ -55,7 +55,7 @@ export function HeroSection() {
           transition={{ duration: 0.6, delay: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
           className="text-muted-foreground uppercase tracking-[0.3em] text-sm mb-12"
         >
-          Rule the realm of stars.
+          Realm of stars
         </motion.p>
 
         {/* CTA Button */}

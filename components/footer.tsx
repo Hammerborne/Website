@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion"
 import Link from "next/link"
+import Image from "next/image"
 
 export function Footer() {
   return (
@@ -16,12 +17,18 @@ export function Footer() {
         >
           {/* Logo */}
           <div className="flex flex-col items-center md:items-start gap-2">
-            <span className="font-[family-name:var(--font-display)] text-3xl tracking-wider text-foreground">
-              HAMMERBORNE
-            </span>
-            <span className="text-xs uppercase tracking-widest text-muted-foreground">
-              Game Studio
-            </span>
+            <div className="flex items-center gap-3">
+              <Image
+                src="/company-logo.png"
+                alt="Hammerborne"
+                width={46}
+                height={46}
+                className="object-contain"
+              />
+              <span className="font-[family-name:var(--font-display)] text-3xl tracking-wider text-foreground">
+                HAMMERBORNE
+              </span>
+            </div>
           </div>
 
           {/* Links */}
