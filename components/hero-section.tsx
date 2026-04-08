@@ -23,7 +23,6 @@ export function HeroSection() {
       />
       {/* Background gradient overlay - cold hangar feel */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#1a1d1e]/95 via-[#1a1d1e]/60 to-[#ffffff]/0 pointer-events-none" />
-      
 
       {/* Main content */}
       <div className="relative z-10 text-center">
@@ -56,7 +55,7 @@ export function HeroSection() {
           transition={{ duration: 0.6, delay: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
           className="text-muted-foreground uppercase tracking-[0.3em] text-sm mb-12"
         >
-          Colonize. Industrialize. Survive.
+          Rule the realm of stars.
         </motion.p>
 
         {/* CTA Button */}

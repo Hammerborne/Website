@@ -3,13 +3,13 @@ import { Share_Tech_Mono, Bebas_Neue } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
-const shareTechMono = Share_Tech_Mono({ 
+const shareTechMono = Share_Tech_Mono({
   weight: '400',
   subsets: ["latin"],
   variable: '--font-mono'
 })
 
-const bebasNeue = Bebas_Neue({ 
+const bebasNeue = Bebas_Neue({
   weight: '400',
   subsets: ["latin"],
   variable: '--font-display'
@@ -48,7 +48,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" style={{ backgroundColor: '#1a1d1e' }}>
       <body className={`${shareTechMono.variable} ${bebasNeue.variable} font-mono antialiased`}>
         {children}
         <div className="noise-overlay" aria-hidden="true" />
