@@ -43,7 +43,7 @@ export function SystemLog() {
                   setTimeout(() => setShowCursor(false), 2750)
                 }
               }, 40)
-              }, 2750)
+              }, 1375)
             }
           }, 40)
         }

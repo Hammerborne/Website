@@ -5,12 +5,12 @@ import Image from "next/image"
 
 const features = [
   {
-    title: "Grand Strategy",
-    description: "Command vast fleets and manage sprawling empires across procedurally generated star systems. Every decision shapes the fate of civilizations.",
+    title: "Infinite Revelation",
+    description: "Every galaxy a new testament. Each pilgrimage a different revelation, a different damnation.",
   },
   {
     title: "Realtime Battles",
-    description: "Command capital ships in brutal real-time engagements. Position your fleet, manage flux, and outmaneuver enemies across the void.",
+    description: "Command your flagship through the battlefield, aiming and firing your ship's turrets to lead your fleet to victory.",
   },
   {
     title: "Low-Tech Sovereignty",
