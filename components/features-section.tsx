@@ -74,6 +74,19 @@ export function FeaturesSection() {
               variants={itemVariants}
               className="group relative isolate aspect-square border-4 border-border bg-[#1a1d1e] p-4 hover:border-cyan transition-colors duration-300 overflow-hidden"
             >
+              {feature.title === "Infinite Revelation" && (
+                <>
+                  <Image
+                    src="/space exploration.gif"
+                    alt=""
+                    fill
+                    unoptimized
+                    className="object-cover object-center pointer-events-none"
+                  />
+                  <div className="absolute inset-0 bg-[#1a1d1e]/70 pointer-events-none" />
+                </>
+              )}
+
               {feature.title === "Realtime Battles" && (
                 <>
                   <Image
