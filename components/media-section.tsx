@@ -30,7 +30,7 @@ export function MediaSection() {
   }, [])
 
   return (
-    <section className="relative py-24 px-6 bg-[#0e1011] overflow-hidden">
+    <section className="relative py-24 px-6 bg-[#232829] overflow-hidden">
       <div className="container mx-auto max-w-4xl">
 
         {/* Section header */}

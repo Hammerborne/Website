@@ -41,7 +41,7 @@ const itemVariants = {
 
 export function FeaturesSection() {
   return (
-    <section id="core-systems" className="relative scroll-mt-24 py-24 px-6 bg-[#232829]">
+    <section id="core-systems" className="relative scroll-mt-24 py-24 px-6 bg-[#0e1011]">
       {/* Section header */}
       <div className="container mx-auto max-w-6xl mb-16">
         <motion.div

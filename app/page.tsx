@@ -14,8 +14,8 @@ export default function Home() {
       {/* <Navigation /> */}
       <HeroSection />
       <SystemLog />
-      <MediaSection />
       <FeaturesSection />
+      <MediaSection />
       <Wishlist />
       <Footer />
     </main>
