@@ -1,7 +1,6 @@
 "use client"
 
 import { motion } from "framer-motion"
-import Link from "next/link"
 import Image from "next/image"
 
 export function Footer() {
@@ -31,27 +30,20 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Links */}
-          <div className="flex items-center gap-8">
-            <Link 
-              href="#" 
-              className="text-sm uppercase tracking-widest text-muted-foreground hover:text-cyan transition-colors"
-            >
-              Press Kit
-            </Link>
-            <a
-              href="https://discord.gg/3cm95G9P63"
-              rel="noopener noreferrer"
-              className="text-sm uppercase tracking-widest text-muted-foreground hover:text-cyan transition-colors"
-            >
-              Discord
+          {/* Social icons */}
+          <div className="flex items-center gap-6">
+            <a href="https://discord.gg/3cm95G9P63" target="_blank" rel="noopener noreferrer" aria-label="Discord">
+              <Image src="/RRSS/Discord (64x).png" alt="Discord" width={28} height={28} className="opacity-100 hover:opacity-75 transition-opacity" />
             </a>
-            <Link 
-              href="#" 
-              className="text-sm uppercase tracking-widest text-muted-foreground hover:text-cyan transition-colors"
-            >
-              Twitter
-            </Link>
+            <a href="https://www.reddit.com" target="_blank" rel="noopener noreferrer" aria-label="Reddit">
+              <Image src="/RRSS/Reddit (64x).png" alt="Reddit" width={28} height={28} className="opacity-100 hover:opacity-75 transition-opacity" />
+            </a>
+            <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+              <Image src="/RRSS/YouTube (64x).png" alt="YouTube" width={28} height={28} className="opacity-100 hover:opacity-75 transition-opacity" />
+            </a>
+            <a href="mailto:contact@hammerborne.com" aria-label="Email">
+              <Image src="/RRSS/Email (64x).png" alt="Email" width={28} height={28} className="opacity-100 hover:opacity-75 transition-opacity" />
+            </a>
           </div>
 
           {/* Copyright */}

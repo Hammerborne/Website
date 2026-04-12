@@ -37,7 +37,7 @@ export default function RootLayout({
   return (
     <html lang="en" style={{ backgroundColor: '#1a1d1e' }}>
       <body className={`${shareTechMono.variable} ${bebasNeue.variable} font-mono antialiased`}>
-        {children}
+{children}
         <div className="noise-overlay" aria-hidden="true" />
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>

@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react"
 import { motion } from "framer-motion"
+import { StarParallax } from "./star-parallax"
 
 const LINE_1 = "PROJECT STATUS: UNDER DEVELOPMENT..."
 const LINE_2 = "EXPECTED RELEASE CYCLE: 2028."
@@ -60,7 +61,8 @@ export function SystemLog() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="relative py-24 px-6">
+    <section ref={sectionRef} className="relative py-24 px-6 overflow-hidden">
+      <StarParallax sectionRef={sectionRef} />
       <div className="container mx-auto max-w-4xl">
         <motion.div
           initial={{ y: 40, opacity: 0 }}

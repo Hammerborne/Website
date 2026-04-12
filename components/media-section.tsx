@@ -2,6 +2,8 @@
 
 import { motion } from "framer-motion"
 import { useEffect, useRef, useState } from "react"
+import { StarParallax } from "./star-parallax"
+
 // Add your screenshot paths here once you have them
 const screenshots = [
   { src: "", alt: "Screenshot 1" },
@@ -12,6 +14,7 @@ const screenshots = [
 ]
 
 export function MediaSection() {
+  const sectionRef = useRef<HTMLElement>(null)
   const videoRef = useRef<HTMLDivElement>(null)
   const [autoplay, setAutoplay] = useState(false)
 
@@ -30,7 +33,8 @@ export function MediaSection() {
   }, [])
 
   return (
-    <section className="relative py-24 px-6 bg-[#232829] overflow-hidden">
+    <section ref={sectionRef} className="relative py-24 px-6 bg-[#232829] overflow-hidden">
+      <StarParallax sectionRef={sectionRef} />
       <div className="container mx-auto max-w-4xl">
 
         {/* Section header */}
