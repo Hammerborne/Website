@@ -35,13 +35,13 @@ export function Footer() {
             <a href="https://discord.gg/3cm95G9P63" target="_blank" rel="noopener noreferrer" aria-label="Discord">
               <Image src="/RRSS/Discord (64x).png" alt="Discord" width={28} height={28} className="opacity-100 hover:opacity-75 transition-opacity" />
             </a>
-            <a href="https://www.reddit.com" target="_blank" rel="noopener noreferrer" aria-label="Reddit">
+            <a href="https://www.reddit.com/r/Asterium/" target="_blank" rel="noopener noreferrer" aria-label="Reddit">
               <Image src="/RRSS/Reddit (64x).png" alt="Reddit" width={28} height={28} className="opacity-100 hover:opacity-75 transition-opacity" />
             </a>
-            <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+            <a href="https://www.youtube.com/@hammerborne" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
               <Image src="/RRSS/YouTube (64x).png" alt="YouTube" width={28} height={28} className="opacity-100 hover:opacity-75 transition-opacity" />
             </a>
-            <a href="mailto:contact@hammerborne.com" aria-label="Email">
+            <a href="mailto:admin@hammerborne.com" aria-label="Email">
               <Image src="/RRSS/Email (64x).png" alt="Email" width={28} height={28} className="opacity-100 hover:opacity-75 transition-opacity" />
             </a>
           </div>
