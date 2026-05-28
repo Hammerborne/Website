@@ -5,16 +5,16 @@ import Image from "next/image"
 
 const features = [
   {
-    title: "Infinite Revelation",
-    description: "Every galaxy a new testament. Each pilgrimage a different revelation, a different damnation.",
+    title: "Procedural Enlightment",
+    description: "Explore the wonders of procedurally generated galaxies, expand, trade and combat in a vast living universe.",
   },
   {
     title: "Realtime Battles",
     description: "Command your flagship through the battlefield, aiming and firing your ship's turrets to lead your fleet to victory.",
   },
   {
-    title: "Low-Tech Sovereignty",
-    description: "Embrace the aesthetic of analog interfaces and brutal efficiency. No sleek holograms here—only switches, dials, and the hum of heavy machinery.",
+    title: "Multiplayer and Modding",
+    description: "Join the Asterium! Play with friends online and download new content from the modding community.",
   },
 ]
 
@@ -74,7 +74,7 @@ export function FeaturesSection() {
               variants={itemVariants}
               className="group relative isolate aspect-square border-4 border-border bg-[#1a1d1e] p-4 hover:border-cyan transition-colors duration-300 overflow-hidden"
             >
-              {feature.title === "Infinite Revelation" && (
+              {feature.title === "Procedural Enlightment" && (
                 <>
                   <Image
                     src="/space exploration.gif"
