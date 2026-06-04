@@ -14,7 +14,7 @@ const features = [
   },
   {
     title: "Multiplayer and Modding",
-    description: "Join the Asterium! Play with friends online and download new content from the modding community.",
+    description: "Play with friends online and download new content from the modding community.",
   },
 ]
 
