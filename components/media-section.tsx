@@ -61,7 +61,7 @@ export function MediaSection() {
           ref={videoRef}
         >
           <iframe
-            src={`https://www.youtube.com/embed/Kdo9aVyuQ0M?autoplay=${autoplay ? 1 : 0}&mute=1`}
+            src={`https://www.youtube.com/embed/5L61zN4SsTw?autoplay=${autoplay ? 1 : 0}&mute=1`}
             title="Asterium — Media"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
