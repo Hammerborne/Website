@@ -100,6 +100,19 @@ export function FeaturesSection() {
                 </>
               )}
 
+              {feature.title === "Multiplayer and Modding" && (
+                <>
+                  <Image
+                    src="/Combat2.gif"
+                    alt=""
+                    fill
+                    unoptimized
+                    className="object-cover object-center pointer-events-none"
+                  />
+                  <div className="absolute inset-0 bg-[#1a1d1e]/70 pointer-events-none" />
+                </>
+              )}
+
               {/* Content above overlay */}
               <div className="relative z-10 flex flex-col h-full justify-end">
                 {/* Title */}
