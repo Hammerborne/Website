@@ -10,8 +10,10 @@ const screenshots = [
   { src: "", alt: "Screenshot 2" },
   { src: "", alt: "Screenshot 3" },
   { src: "", alt: "Screenshot 4" },
-  { src: "", alt: "Screenshot 5" },
 ]
+
+// Static export of the game codex (tools/codex/export-codex.ps1 writes public/codex)
+const CODEX_HREF = "/codex/"
 
 export function MediaSection() {
   const sectionRef = useRef<HTMLElement>(null)
@@ -99,6 +101,19 @@ export function MediaSection() {
               )}
             </div>
           ))}
+          <a
+            href={CODEX_HREF}
+            target="_blank"
+            rel="noopener"
+            className="group relative border-2 border-border hover:border-cyan transition-colors duration-300 overflow-hidden"
+            style={{ aspectRatio: "16/9" }}
+          >
+            <div className="w-full h-full bg-[#232829] flex items-center justify-center">
+              <span className="text-xs font-mono text-muted-foreground uppercase tracking-widest group-hover:text-cyan transition-colors">
+                Codex
+              </span>
+            </div>
+          </a>
         </motion.div>
 
       </div>

@@ -5,7 +5,7 @@ import { motion } from "framer-motion"
 import { StarParallax } from "./star-parallax"
 
 const LINE_1 = "PROJECT STATUS: UNDER DEVELOPMENT..."
-const LINE_2 = "EXPECTED RELEASE CYCLE: 2028."
+const LINE_2 = "EXPECTED RELEASE CYCLE: 2027."
 
 export function SystemLog() {
   const [displayedLine1, setDisplayedLine1] = useState("")

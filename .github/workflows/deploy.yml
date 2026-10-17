@@ -1,9 +1,23 @@
 name: Deploy to GitHub Pages
 
+# Builds the site plus the game codex (hammerborne.com/codex/). The codex is exported from CoreMod's
+# ModSources by AsteriumTools/tools/codex/export-codex.ps1; CoreMod's codex-trigger workflow fires
+# `repository_dispatch: codex` here whenever the codex branch changes.
+#
+# Codex branch: the run's input, else the dispatch payload, else the CODEX_BRANCH variable, else v0.01.
+# Needs secret CODEX_REPO_TOKEN: a fine-grained token with Contents read on CoreMod and AsteriumTools.
+
 on:
   push:
     branches: [main]
+  repository_dispatch:
+    types: [codex]
   workflow_dispatch:
+    inputs:
+      codex_branch:
+        description: CoreMod branch to build the codex from (blank = CODEX_BRANCH variable, else v0.01)
+        required: false
+        default: ''
 
 permissions:
   contents: read
@@ -14,14 +28,97 @@ concurrency:
   group: pages
   cancel-in-progress: true
 
+env:
+  CODEX_BRANCH: ${{ inputs.codex_branch || github.event.client_payload.branch || vars.CODEX_BRANCH || 'v0.01' }}
+
 jobs:
+  codex:
+    runs-on: windows-latest   # the export uses Windows PowerShell + System.Drawing
+    defaults:
+      run:
+        shell: powershell
+        working-directory: ws
+    steps:
+      # Same layout as the local workspace: ws/tools/codex, ws/CoreMod, ws/Website.
+      - uses: actions/checkout@v4
+        with:
+          repository: Hammerborne/AsteriumTools
+          token: ${{ secrets.CODEX_REPO_TOKEN }}
+          path: ws
+      - uses: actions/checkout@v4
+        with:
+          repository: Hammerborne/CoreMod
+          ref: ${{ env.CODEX_BRANCH }}
+          token: ${{ secrets.CODEX_REPO_TOKEN }}
+          path: ws/CoreMod
+          lfs: false   # pulled selectively below; the free LFS bandwidth is 1 GB/month
+      - uses: actions/checkout@v4
+        with:
+          path: ws/Website
+          sparse-checkout: public
+
+      - name: Codex version
+        id: ver
+        run: |
+          $core  = git -C CoreMod rev-parse HEAD
+          $tools = git rev-parse HEAD:tools/codex
+          "key=codex-out-$core-$tools" >> $env:GITHUB_OUTPUT
+          Write-Host "Codex from CoreMod $env:CODEX_BRANCH @ $core"
+
+      # Nothing changed since the last export (e.g. a website-only push): reuse it.
+      - name: Reuse previous export
+        id: out
+        uses: actions/cache@v4
+        with:
+          path: ws/Website/public/codex
+          key: ${{ steps.ver.outputs.key }}
+
+      - name: List the images the codex uses
+        if: steps.out.outputs.cache-hit != 'true'
+        run: powershell -NoProfile -ExecutionPolicy Bypass -File tools/codex/build-codex.ps1 -OutFile "$env:RUNNER_TEMP\list.js" -ListImagesTo codex-images.txt
+
+      - name: Restore LFS cache
+        if: steps.out.outputs.cache-hit != 'true'
+        uses: actions/cache@v4
+        with:
+          path: ws/CoreMod/.git/lfs
+          key: codex-lfs-${{ hashFiles('ws/codex-images.txt') }}
+          restore-keys: codex-lfs-
+
+      - name: Pull only those images from LFS
+        if: steps.out.outputs.cache-hit != 'true'
+        working-directory: ws/CoreMod
+        run: |
+          $paths = Get-Content ../codex-images.txt | ForEach-Object { "Assets/ModSources/$_" }
+          for ($i = 0; $i -lt $paths.Count; $i += 60) {
+            $batch = ($paths[$i..([Math]::Min($i + 59, $paths.Count - 1))]) -join ','
+            git lfs pull --include="$batch" --exclude=""
+            if ($LASTEXITCODE) { exit $LASTEXITCODE }
+          }
+
+      - name: Export codex
+        if: steps.out.outputs.cache-hit != 'true'
+        run: powershell -NoProfile -ExecutionPolicy Bypass -File tools/codex/export-codex.ps1
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: codex
+          path: ws/Website/public/codex
+          retention-days: 1
+
   deploy:
+    needs: codex
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: codex
+          path: public/codex
 
       - uses: actions/setup-node@v4
         with:
