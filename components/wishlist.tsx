@@ -33,14 +33,14 @@ export function Wishlist() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             {/* Steam button */}
             <a
-              href="https://discord.gg/3cm95G9P63"
+              href="https://store.steampowered.com/app/4716310/Asterium/"
               target="_blank"
               rel="noopener noreferrer"
               className="group relative flex items-center justify-center gap-3 border-2 border-border bg-[#232829] px-8 py-4 hover:border-cyan transition-colors duration-300 overflow-hidden"
             >
               <div className="absolute inset-0 flex items-center justify-center bg-[#1a1d1e]/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
                 <span className="font-[family-name:var(--font-display)] tracking-widest text-cyan text-sm">
-                  SOON — JOIN DISCORD
+                  WISHLIST ON STEAM
                 </span>
               </div>
               <Image

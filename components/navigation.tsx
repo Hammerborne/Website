@@ -30,6 +30,14 @@ export function Navigation() {
             Press
           </Link>
           <Link
+            href="https://store.steampowered.com/app/4716310/Asterium/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm uppercase tracking-widest text-muted-foreground hover:text-cyan transition-colors border-b-2 border-transparent hover:border-cyan"
+          >
+            Steam
+          </Link>
+          <Link
             href="https://discord.gg/3cm95G9P63"
             rel="noopener noreferrer"
             className="text-sm uppercase tracking-widest text-muted-foreground hover:text-cyan transition-colors border-b-2 border-transparent hover:border-cyan"
